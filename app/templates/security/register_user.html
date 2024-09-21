@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="d-flex justify-content-center">
+  <div class="col-md-6">
+    <h1 class="text-left">{% block title %}{{ _fsdomain('Register') }}{% endblock %}</h1>
+    <form action="" method="post">
+      {{ register_user_form.hidden_tag() }}
+      <div class="mb-3">
+        {{ register_user_form.email.label(class='form-label') }}
+        {{ register_user_form.email(class='form-control', autofocus=autofocus) }}
+        {% for error in register_user_form.email.errors %}
+        <span class="text-danger">{{ error }}</span>
+        {% endfor %}
+      </div>
+      <div class="mb-3">
+        {{ register_user_form.username.label(class='form-label') }}
+        {{ register_user_form.username(class='form-control') }}
+        {% for error in register_user_form.username.errors %}
+        <span class="text-danger">{{ error }}</span>
+        {% endfor %}
+      </div>
+      <div class="mb-3">
+        {{ register_user_form.password.label(class='form-label') }}
+        {{ register_user_form.password(class='form-control') }}
+        {% for error in register_user_form.password.errors %}
+        <span class="text-danger">{{ error }}</span>
+        {% endfor %}
+      </div>
+      <div class="mb-3">
+        {{ register_user_form.password_confirm.label(class='form-label') }}
+        {{ register_user_form.password_confirm(class='form-control') }}
+        {% for error in register_user_form.password_confirm.errors %}
+        <span class="text-danger">{{ error }}</span>
+        {% endfor %}
+      </div>
+      <div class="d-flex justify-content-between">
+        <div class="col-md-2">
+          {{ register_user_form.submit(class='btn btn-primary') }}
+        </div>
+        <div class="col-md-6">
+          <p>{{ _('Already have an account? Then ') }}<a class="btn btn-secondary" href="{{ url_for('security.login') }}">{{ _fsdomain('Login') }}</a></p>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock %}

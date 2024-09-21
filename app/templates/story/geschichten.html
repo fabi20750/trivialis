@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="d-flex justify-content-center">
+  <div class="col-md-6">
+    <h1 class="text-left">{{ _('Choose a story') }}</h1>
+    <div class="d-flex">
+      <div class="row">
+      {% for story in stories %}
+      <div class="card col-md-4">
+        <div class="card-header">
+          <h2 class="card-title">{{ story.name }}</h2>
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{ story.description }}</p>
+          <a class="btn btn-primary" href="{{ url_for('story.story', story_id=story.id) }}">{{ _('Choose') }}</a>
+        </div>
+      </div>
+      {% if loop.index % 3 == 0 %}
+      <div class="w-100"></div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

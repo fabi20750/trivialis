@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h1>Story bearbeiten: {{ story.name }}</h1>
+    <form method="POST">
+        <div class="mb-3">
+            <label for="story_name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="story_name" name="story_name" value="{{ story.name }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="story_description" class="form-label">Beschreibung</label>
+            <textarea class="form-control" id="story_description" name="story_description" rows="3" required>{{ story.description }}</textarea>
+        </div>
+        <h2>Tasks</h2>
+        {% for task in tasks %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Task: {{ task.name }}</h5>
+                    
+                    <div>
+                        <strong>Beschreibung:</strong> <span class="task-description">{{ task.description }}</span><br>
+                        <strong>Aufgabe:</strong> <span class="task-task">{{ task.task }}</span><br>
+                        <strong>Typ:</strong> <span class="task-type">{{ task.type }}</span><br>
+                        <strong>Punkte:</strong> <span class="task-points">{{ task.points }}</span><br>
+                        <strong>Max Versuche:</strong> <span class="task-max-attempts">{{ task.maxAttempts }}</span><br>
+                    </div>
+
+                    <!-- Display attached questions -->
+                    {% if task.read_questions %}
+                        <strong>Lesefragen:</strong>
+                        <ul>
+                            {% for question in task.read_questions %}
+                                <li>Frage: {{ question.question }}<br>
+                                    Antwort: {{ question.correct_answer }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">Änderungen speichern</button>
+    </form>
+</div>
+{% endblock %}

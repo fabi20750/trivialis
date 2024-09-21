@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>{{ title }}</h1>
+    <p>{{ geschichte.Description }}</p>
+    <h2>Aufgaben</h2>
+    <div class="aufgaben">
+        {% for aufgabe in aufgaben %}
+            <div class="aufgabe-kachel">
+                <h3><a href="#modal{{ aufgabe.IdTask }}">{{ aufgabe.Name }}</a></h3>
+                <p>{{ aufgabe.Description }}</p>
+            </div>
+
+            <!-- Modal -->
+            <div id="modal{{ aufgabe.IdTask }}" class="modalDialog">
+                <div>
+                    <a href="#close" title="Close" class="close">X</a>
+                    <h2>{{ aufgabe.Name }}</h2>
+                    <p>{{ aufgabe.Description }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

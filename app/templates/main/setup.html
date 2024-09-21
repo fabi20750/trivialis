@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="d-flex justify-content-center">
+  <div class="col-md-6">
+    <h1 class="text-left">{% block title %}{{ _('Setup') }} {{ _('aware.swiss') }}{% endblock %}</h1>
+    <div class="">
+      <p class="">{{ _('Please configure the admin user.') }}</p>
+      <p class="">{{ _('As part of this setup, the stories are loaded into the database.') }}</p>
+      <form method="post">
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+          {{ form.email.label(class='form-label') }}
+          {{ form.email(class='form-control') }}
+          {% for error in form.email.errors %}
+          <span class="text-danger">{{ error }}</span>
+          {% endfor %}
+        </div>
+        <div class="mb-3">
+          {{ form.username.label(class='form-label') }}
+          {{ form.username(class='form-control') }}
+          {% for error in form.username.errors %}
+          <span class="text-danger">{{ error }}</span>
+          {% endfor %}
+        </div>
+        <div class="mb-3">
+          {{ form.password.label(class='form-label') }}
+          {{ form.password(class='form-control') }}
+          {% for error in form.password.errors %}
+          <span class="text-danger">{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% if form.password_confirm %}
+        <div class="mb-3">
+          {{ form.password_confirm.label(class='form-label') }}
+          {{ form.password_confirm(class='form-control') }}
+          {% for error in form.password_confirm.errors %}
+          <span class="text-danger">{{ error }}</span>
+          {% endfor %}
+        </div>
+        <div class="mb-3">
+          {{ form.adminLanguage.label(class='form-label') }}
+          {{ form.adminLanguage(class='form-control') }}
+          {% for error in form.adminLanguage.errors %}
+          <span class="text-danger">{{ error }}</span>
+          {% endfor %}
+        </div>
+        <div class="mb-3">
+          {{ form.websiteLanguage.label(class='form-label') }}
+          {{ form.websiteLanguage(class='form-control') }}
+          {% for error in form.websiteLanguage.errors %}
+          <span class="text-danger">{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+        {{ form.submit(class='btn btn-primary') }}
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}

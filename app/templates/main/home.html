@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ _('Home') }}</h1>
+
+{% if current_user %}
+  <p>{{ _('Willkommen') }}, {{ current_user.username }}! {{ _('Ihre E-Mail-Adresse ist') }} {{ current_user.email }}.</p>
+{% else %}
+  <p>{{ _('Willkommen') }}, {{ _('Gast') }}!</p>
+{% endif %}
+
+{% endblock %}

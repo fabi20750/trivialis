@@ -1,0 +1,19 @@
+<!-- Display errors -->
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<section class="toast-container top-0 end-0 p3 pt-5">
+  {% for message in messages %}
+  <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <strong class="me-auto">{{ _('Trivialis') }}</strong>
+      <small class="text-muted">{{ _('just now') }}</small>
+      <button class="btn-close" type="button" data-bs-dismiss="toast" aria-label="{{ _('Close') }}"></button>
+    </div>
+    <div class="toast-body">
+      <p>{{ message }}</p>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+{% endif %}
+{% endwith %}

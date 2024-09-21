@@ -1,0 +1,141 @@
+# German translations for PROJECT.
+# Copyright (C) 2024 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-05-13 18:37+0200\n"
+"PO-Revision-Date: 2024-05-13 18:38+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.15.0\n"
+
+#: app/templates/flash.html:8 app/templates/navigation.html:6
+msgid "Trivialis"
+msgstr ""
+
+#: app/templates/flash.html:9
+msgid "just now"
+msgstr ""
+
+#: app/templates/flash.html:10
+msgid "Close"
+msgstr ""
+
+#: app/templates/navigation.html:10
+msgid "Stories"
+msgstr ""
+
+#: app/templates/main/profile.html:5 app/templates/navigation.html:17
+msgid "Profile"
+msgstr ""
+
+#: app/templates/navigation.html:20
+msgid "Logout"
+msgstr ""
+
+#: app/templates/main/index.html:12 app/templates/navigation.html:24
+msgid "Login"
+msgstr ""
+
+#: app/templates/main/register.html:5 app/templates/navigation.html:27
+msgid "Register"
+msgstr ""
+
+#: app/templates/admin/admin.html:5
+msgid "Admin Page"
+msgstr ""
+
+#: app/templates/admin/admin.html:8
+msgid "Welcome, Administrator!"
+msgstr ""
+
+#: app/templates/admin/admin.html:9
+msgid "This is the admin page."
+msgstr ""
+
+#: app/templates/main/change_password.html:5
+msgid "Change Password"
+msgstr ""
+
+#: app/templates/main/home.html:3
+msgid "Home"
+msgstr ""
+
+#: app/templates/main/home.html:6 app/templates/main/home.html:8
+msgid "Willkommen"
+msgstr ""
+
+#: app/templates/main/home.html:6
+msgid "Ihre E-Mail-Adresse ist"
+msgstr ""
+
+#: app/templates/main/home.html:8
+msgid "Gast"
+msgstr ""
+
+#: app/templates/main/index.html:5
+msgid "Wilkommen auf Trivialis"
+msgstr ""
+
+#: app/templates/main/index.html:10
+msgid ""
+"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy "
+"eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam "
+"voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet "
+"clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit "
+"amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam "
+"nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, "
+"sed diam voluptua. At vero eos et accusam et justo duo dolores et ea "
+"rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum"
+" dolor sit amet."
+msgstr ""
+
+#: app/templates/main/login.html:5
+msgid "Log In"
+msgstr ""
+
+#: app/templates/main/profile.html:8
+msgid "Benutzername"
+msgstr ""
+
+#: app/templates/main/profile.html:12
+msgid "Vorname"
+msgstr ""
+
+#: app/templates/main/profile.html:16
+msgid "Nachname"
+msgstr ""
+
+#: app/templates/main/profile.html:20
+msgid "Email"
+msgstr ""
+
+#: app/templates/main/profile.html:24
+msgid "Sprache"
+msgstr ""
+
+#: app/templates/main/profile.html:28
+msgid "Passwort ändern"
+msgstr ""
+
+#: app/templates/story/geschichte.html:7
+msgid "Aufgaben"
+msgstr ""
+
+#: app/templates/story/geschichten.html:5
+msgid "Wähle eine Geschichte aus"
+msgstr ""
+
+#: app/templates/story/geschichten.html:13
+msgid "Auswählen"
+msgstr ""
+

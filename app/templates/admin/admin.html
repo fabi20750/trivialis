@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+  <h1>Verwalten Sie Stories</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Aktionen</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for story in stories %}
+      <tr>
+        <td>{{ story.id }}</td>
+        <td>{{ story.name }}</td>
+        <td>{{ 'Aktiv' if story.is_active else 'Inaktiv' }}</td>
+        <td>
+          <form method="POST" style="display: inline;">
+            <input type="hidden" name="story_id" value="{{ story.id }}">
+            <button type="submit" name="toggle_story" class="btn btn-warning">
+              {{ 'Deaktivieren' if story.is_active else 'Aktivieren' }}
+            </button>
+          </form>
+          <form method="POST" style="display: inline;">
+            <input type="hidden" name="story_id" value="{{ story.id }}">
+            <button type="submit" name="edit_story" class="btn btn-info" style="margin-left: 10px;">
+              Bearbeiten
+            </button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h1>Verwalten Sie Benutzer</h1>  <!-- New header for user management -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Benutzername</th>
+        <th>Email</th>
+        <th>Aktiv</th>  <!-- Display active status -->
+        <th>Aktionen</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in users %}
+      <tr>
+        <td>{{ user.id }}</td>
+        <td>
+          <form method="POST" style="display: inline;">
+            <input type="hidden" name="user_id" value="{{ user.id }}">
+            <input type="text" name="new_username" value="{{ user.username }}" required>
+            <button type="submit" name="update_username" class="btn btn-primary">Ändern</button>
+          </form>
+        </td>
+        <td>{{ user.email }}</td>
+        <td>{{ 'Aktiv' if user.active else 'Inaktiv' }}</td>  <!-- Display active status -->
+        <td>
+          <form method="POST" style="display: inline;">
+            <input type="hidden" name="user_id" value="{{ user.id }}">
+            <button type="submit" name="toggle_active" class="btn btn-warning">
+              {{ 'Deaktivieren' if user.active else 'Aktivieren' }}
+            </button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
