@@ -44,3 +44,18 @@ body {
 .hint-btn:hover {
     background-color: #45a049;
 }
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .card-body > div:last-child {
+    margin-top: auto;
+    padding-top: 1rem;
+  }
+  
+  .card-body .btn {
+    align-self: flex-start;
+  }
