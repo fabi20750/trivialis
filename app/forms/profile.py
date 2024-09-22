@@ -3,6 +3,7 @@ from flask_wtf import FlaskForm
 from wtforms import EmailField, SelectField, StringField, SubmitField
 from wtforms.validators import Email, Length, Optional
 
+#Form for Editing Profile
 class EditProfileForm(FlaskForm):
   firstName = StringField(_('First Name'), validators=[Length(max=255)]) # Max length of db-column
   lastName = StringField(_('Last Name'), validators=[Length(max=255)]) # Max length of db-column

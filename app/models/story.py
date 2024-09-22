@@ -29,7 +29,7 @@ hintRequirement = db.Table(
   db.Column('requirement_id', db.Integer, db.ForeignKey('hint.id', ondelete='CASCADE'))
 )
 
-
+#Model for School
 class School(db.Model):
   __tablename__ = 'school'
   id = db.Column(db.Integer, primary_key=True)
@@ -42,6 +42,7 @@ class School(db.Model):
   createdAt = db.Column(db.DateTime)
   updatedAt = db.Column(db.DateTime)
 
+#Model for Story
 class Story(db.Model):
   __tablename__ = 'story'
   id = db.Column(db.Integer, primary_key=True)
@@ -52,7 +53,7 @@ class Story(db.Model):
 
   def __repr__(self):
     return '<Story {}>'.format(self.name)
-  
+
 class Task(db.Model):
     __tablename__ = 'task'
     id = db.Column(db.Integer, primary_key=True)
@@ -71,11 +72,11 @@ class Task(db.Model):
     
     answers = db.relationship('Answer', back_populates='task', lazy='dynamic')
     hints = db.relationship('Hint', back_populates='task', lazy='dynamic')
-    # Remove the resource relationship from here
+   
 
     def __repr__(self):
         return '<Task {}>'.format(self.name)
-
+# Class for Answer
 class Answer(db.Model):
     __tablename__ = 'answer'
     id = db.Column(db.Integer, primary_key=True)
@@ -89,7 +90,8 @@ class Answer(db.Model):
 
     def __repr__(self):
         return '<Answer {}>'.format(self.text)
-        
+
+#Model for UserAnswer
 class UserAnswer(db.Model):
     __tablename__ = 'user_answer'
     id = db.Column(db.Integer, primary_key=True)
@@ -124,6 +126,7 @@ class Resource(db.Model):
   def __repr__(self):
     return '<Resource {}>'.format(self.name)
 
+#Model for Hint not used at the moment
 class Hint(db.Model):
   __tablename__ = 'hint'
   id = db.Column(db.Integer, primary_key=True)
@@ -137,6 +140,7 @@ class Hint(db.Model):
   def __repr__(self):
     return '<Hint {}>'.format(self.hint)
 
+#Model for Tag not used at the moment
 class Tag(db.Model):
   __tablename__ = 'tag'
   id = db.Column(db.Integer, primary_key=True)

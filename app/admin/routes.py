@@ -2,9 +2,9 @@ from flask import render_template, redirect, url_for, flash, request, current_ap
 from flask_security import auth_required, current_user
 from app import db
 from app.admin import bp
-from app.models import Story, Task, Answer, Hint, ReadQuestion, User, Role  # Ensure User and Role are imported
-from sqlalchemy.orm import joinedload, subqueryload  # Import subqueryload
-
+from app.models import Story, Task, Answer, Hint, ReadQuestion, User, Role  
+from sqlalchemy.orm import joinedload, subqueryload  
+#Standard Route for Admins
 @bp.route('/', methods=['GET', 'POST'])
 @auth_required()
 def admin():
@@ -44,6 +44,7 @@ def admin():
 
     return render_template('admin/admin.html', stories=stories, users=users)  # Pass both stories and users to the template
 
+#Route for Editing Stories
 @bp.route('/edit_story/<int:story_id>', methods=['GET', 'POST'])
 @auth_required()
 def edit_story(story_id):
@@ -71,7 +72,8 @@ def edit_story(story_id):
 
     return render_template('admin/edit_story.html', story=story, tasks=tasks)
 
-@bp.route('/add_story', methods=['GET', 'POST'])  # Neue Route zum Hinzufügen von Stories
+#Route for Adding Stories
+@bp.route('/add_story', methods=['GET', 'POST'])  
 @auth_required()
 def add_story():
     if request.method == 'POST':

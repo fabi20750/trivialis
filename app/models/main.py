@@ -1,5 +1,6 @@
 from app import db
 
+#Model for Language
 class Language(db.Model):
   __tablename__ = 'language'
   id = db.Column(db.Integer, primary_key=True)
@@ -12,6 +13,7 @@ class Language(db.Model):
   def __repr__(self):
     return '<Language {}'.format(self.name)
 
+#Model for Tenant
 class Tenant(db.Model):
   __tablename__ = 'tenant'
   id = db.Column(db.Integer, primary_key=True)

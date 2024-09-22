@@ -4,12 +4,14 @@ from flask_security import hash_password
 from app import db
 from app.models import Language, Profile, Role, Story, Task, Answer
 
+#Function to create languages
 def create_languages(): 
   for l in current_app.config['LANGUAGES']:
     db.session.add(Language(name=l['name'], isoCode=l['isoCode'], icon=l['icon']))
   db.session.commit()
   return True
 
+#Function to create roles
 def create_roles():
   for r in current_app.config['USER_ROLES']:
     current_app.security.datastore.find_or_create_role(
@@ -20,6 +22,7 @@ def create_roles():
   db.session.commit()
   return True
 
+#Function to create users
 def create_users(adminUsername, adminEmail, adminPassword, adminLanguage):
   for r in Role.query.all():
     if r.name == 'Admin':
@@ -43,6 +46,7 @@ def create_users(adminUsername, adminEmail, adminPassword, adminLanguage):
   db.session.commit()
   return True
 
+#Function to create stories
 def create_stories():
   # Clear existing stories
   Story.query.delete()
@@ -69,6 +73,7 @@ def create_stories():
   stories = Story.query.all()
   return stories
 
+#Function to create tasks
 def create_tasks():
   # Clear existing tasks
   Task.query.delete()

@@ -4,6 +4,7 @@ from app import db
 from .main import Language
 from .security import User
 
+#Model for Profile
 class Profile(db.Model):
   __tablename__ = 'profile'
   id = db.Column(db.Integer, primary_key=True)

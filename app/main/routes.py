@@ -10,6 +10,7 @@ from app.main import bp
 from app.models import Language, School, User, Story  # Stellen Sie sicher, dass das Story-Modell importiert wird
 from .setup import create_languages, create_roles, create_stories, create_tasks, create_users
 
+#Standard Route for Users
 @bp.route('/')
 def index():
   # Redirect to setup page if no users are in database
@@ -18,6 +19,7 @@ def index():
     return redirect(url_for('main.setup'), code=307)
   return render_template('main/index.html')
   
+#Route for Setup
 @bp.route('/setup/', methods=['GET', 'POST'])
 def setup():
   # Redirect to homepage if one or more users are already in the database

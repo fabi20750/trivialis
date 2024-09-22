@@ -7,6 +7,7 @@ from app.forms import EditProfileForm
 from app.models import Language, Profile
 from app.profile import bp
 
+#Route for Profile
 @bp.route('/')
 @auth_required()
 def profile():
@@ -15,10 +16,13 @@ def profile():
   points = current_user.total_points
   return render_template('profile/index.html', profile=profile, language=language, points=points)
 
+#Route for Edit Profile
 @bp.route('/edit/', methods=['GET', 'POST'])
 @auth_required()
 def edit():
+  #Get the profile for the current user
   profile = db.first_or_404(Profile.query.filter_by(userId=current_user.id))
+  #Create the form for the profile
   form = EditProfileForm(formdata=request.form, obj=profile, data={'email': current_user.email})
   form.languageId.choices = [(l.id, l.name) for l in Language.query.all()]
   if form.validate_on_submit():

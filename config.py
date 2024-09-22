@@ -53,14 +53,14 @@ class Config:
   #SECURITY_LOGOUT_METHODS = ['Post']
   # Authentication (Flask-Security): Registerable
   SECURITY_REGISTERABLE = True
-  SECURITY_SEND_REGISTER_EMAIL = False # TODO nk20240513: Make this dependent on environment (nonprod, prod)
+  SECURITY_SEND_REGISTER_EMAIL = False # Make this dependent on environment (nonprod, prod)
   SECURITY_USERNAME_ENABLE = True
   SECURITY_USERNAME_REQUIRED = True # School kids don't necessarily have an email address
   SECURITY_USERNAME_MINLENGTH = 3 # Think of short names like Ben or Tom
   SECURITY_USERNAME_MAXLENGTH = 32
   # Authentication (Flask-Security): Changeable
   SECURITY_CHANGEABLE = True
-  SECURITY_SEND_PASSWORD_CHANGE_EMAIL = False # TODO nk20240514: Make this dependent on environment (nonprod, prod)
+  SECURITY_SEND_PASSWORD_CHANGE_EMAIL = False 
   # Authentication (Flask-Security): Recoverable
-  SECURITY_RECOVERABLE = True # TODO nk20240513: Verify implementation
-  SECURITY_SEND_PASSWORD_RESET_EMAIL = False # TODO nk20240513: Make this dependent on environment (nonprod, prod)
+  SECURITY_RECOVERABLE = True #  Verify implementation
+  SECURITY_SEND_PASSWORD_RESET_EMAIL = False 

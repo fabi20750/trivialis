@@ -10,13 +10,13 @@ from sqlalchemy.orm import joinedload
 def stories():
     stories = Story.query.filter_by(is_active=True).all()
     return render_template('story/geschichten.html', stories=stories)
-
+#Route for Story
 @bp.route('/<int:story_id>')
 @auth_required()
 def story(story_id):
     story = Story.query.filter_by(id=story_id, is_active=True).first_or_404()
     tasks = Task.query.filter_by(storyId=story.id).order_by(Task.sort).all()
-    
+    #Log the story and the number of tasks
     current_app.logger.info(f"Story: {story.name}, Number of tasks: {len(tasks)}")
     
     for task in tasks:
@@ -27,18 +27,19 @@ def story(story_id):
     
     return render_template('story/geschichte.html', story=story, tasks=tasks)
 
+#Route for Answer
 @bp.route('/<int:story_id>/task/<int:task_id>/answer', methods=['POST'])
 @auth_required()
 def answer_question(story_id, task_id):
     task = Task.query.get_or_404(task_id)
     points_earned = 0
-
+    #Check if the task is a multiple choice task
     if task.type == 'multiple_choice':
         answer_id = request.form.get('answer')
         if answer_id:
             answer = Answer.query.get(answer_id)
             user_answer = UserAnswer(user_id=current_user.id, task_id=task.id, answer_id=answer.id)
-            
+            #Check if the answer is correct
             if answer.is_correct:
                 points_earned = task.points  
                 user_answer.points_earned = points_earned
@@ -49,9 +50,9 @@ def answer_question(story_id, task_id):
             db.session.add(user_answer)
         else:
             flash('Bitte wählen Sie eine Antwort aus.', 'error')
-    
+    #Check if the task is a read task
     elif task.type == 'read':
-        
+        #Calculate the points earned
         points_earned = task.points  
         user_answer = UserAnswer(user_id=current_user.id, task_id=task.id, points_earned=points_earned)
         
@@ -59,6 +60,7 @@ def answer_question(story_id, task_id):
         
         flash(f'Sie haben {points_earned} Punkte für das Lesen verdient.', 'success')
 
+    #Add the points to the user
     if points_earned > 0:
         current_user.total_points = (current_user.total_points or 0) + points_earned
     

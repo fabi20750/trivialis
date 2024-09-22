@@ -1,9 +1,10 @@
 from flask import jsonify
 from flask_restful import Resource
 from app.models import Story, Task, User, UserAnswer
-from app.api import api, bp  # Ensure both api and bp are imported
-from app import db  # Import db from your main app module
+from app.api import api, bp  
+from app import db  
 
+#API Routes for Stories
 class StoryListResource(Resource):
     def get(self):
         stories = Story.query.filter_by(is_active=True).all()
@@ -13,6 +14,7 @@ class StoryListResource(Resource):
             'description': story.description
         } for story in stories])
 
+#API Routes for Stories
 class StoryDetailResource(Resource):
     def get(self, story_id):
         story = Story.query.filter_by(id=story_id, is_active=True).first_or_404()
@@ -32,6 +34,7 @@ class StoryDetailResource(Resource):
 api.add_resource(StoryListResource, '/stories')
 api.add_resource(StoryDetailResource, '/stories/<int:story_id>')
 
+#API Routes for Healthcheck
 @bp.route('/healthcheck')
 def healthcheck():
     return jsonify({"message": "API is working"})
