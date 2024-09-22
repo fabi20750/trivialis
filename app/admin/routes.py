@@ -61,12 +61,13 @@ def edit_story(story_id):
             flash('Story wurde gelöscht.', 'success')
             return redirect(url_for('admin.admin'))
         
-        # Update story fields based on the form input
-        story.name = request.form.get('story_name')
-        story.description = request.form.get('story_description')
-        db.session.commit()
-        flash('Änderungen wurden gespeichert.', 'success')
-        return redirect(url_for('admin.admin'))
+        if 'save_changes' in request.form:  # Check if save changes request is made
+            # Update story fields based on the form input
+            story.name = request.form.get('story_name')
+            story.description = request.form.get('story_description')
+            db.session.commit()
+            flash('Änderungen wurden gespeichert.', 'success')
+            return redirect(url_for('admin.admin'))
 
     return render_template('admin/edit_story.html', story=story, tasks=tasks)
 

@@ -2,7 +2,7 @@
 {% block content %}
 <div class="container mt-4">
     <h1>Story bearbeiten: {{ story.name }}</h1>
-    <form method="POST" onsubmit="return confirm('Sind Sie sicher, dass Sie diese Story löschen möchten?');">
+    <form method="POST">
         <div class="mb-3">
             <label for="story_name" class="form-label">Name</label>
             <input type="text" class="form-control" id="story_name" name="story_name" value="{{ story.name }}" required>
@@ -11,6 +11,7 @@
             <label for="story_description" class="form-label">Beschreibung</label>
             <textarea class="form-control" id="story_description" name="story_description" rows="3" required>{{ story.description }}</textarea>
         </div>
+        
         <h2>Tasks</h2>
         {% for task in tasks %}
             <div class="card mb-3">
@@ -38,8 +39,9 @@
                 </div>
             </div>
         {% endfor %}
-        <button type="submit" class="btn btn-primary">Änderungen speichern</button>
-        <button type="submit" name="delete_story" class="btn btn-danger">Story löschen</button>
+        
+        <button type="submit" name="save_changes" class="btn btn-primary">Änderungen speichern</button>
+        <button type="submit" name="delete_story" class="btn btn-danger" onclick="return confirm('Sind Sie sicher, dass Sie diese Story löschen möchten?');">Story löschen</button>
     </form>
 </div>
 {% endblock %}
