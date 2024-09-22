@@ -64,6 +64,27 @@ def edit_story(story_id):
 
     return render_template('admin/edit_story.html', story=story, tasks=tasks)
 
+@bp.route('/add_story', methods=['GET', 'POST'])  # Neue Route zum Hinzufügen von Stories
+@auth_required()
+def add_story():
+    if request.method == 'POST':
+        new_story = Story(
+            name=request.form.get('story_name'),
+            description=request.form.get('story_description'),
+            is_active=True  # Standardmäßig aktiv
+        )
+        db.session.add(new_story)
+        db.session.commit()
+        flash('Neue Story wurde hinzugefügt.', 'success')
+        return redirect(url_for('admin.admin'))
+
+    return render_template('admin/add_story.html')  # Neues Template für das Hinzufügen von Stories
+
+
+
+
+    
+
 
 
 

@@ -2,6 +2,7 @@
 {% block content %}
 <div class="container mt-4">
   <h1>Verwalten Sie Stories</h1>
+  <a href="{{ url_for('admin.add_story') }}" class="btn btn-success mb-3">Neue Story hinzufügen</a>  <!-- Neuer Button -->
   <table class="table">
     <thead>
       <tr>

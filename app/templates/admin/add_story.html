@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h1>Neue Story hinzufügen</h1>
+    <form method="POST">
+        <div class="mb-3">
+            <label for="story_name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="story_name" name="story_name" required>
+        </div>
+        <div class="mb-3">
+            <label for="story_description" class="form-label">Beschreibung</label>
+            <textarea class="form-control" id="story_description" name="story_description" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Story hinzufügen</button>
+    </form>
+</div>
+{% endblock %}
