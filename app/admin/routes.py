@@ -55,6 +55,12 @@ def edit_story(story_id):
         task.read_questions = ReadQuestion.query.filter_by(task_id=task.id).all()  # Fetch related questions
 
     if request.method == 'POST':
+        if 'delete_story' in request.form:  # Check if delete request is made
+            db.session.delete(story)  
+            db.session.commit()
+            flash('Story wurde gelöscht.', 'success')
+            return redirect(url_for('admin.admin'))
+        
         # Update story fields based on the form input
         story.name = request.form.get('story_name')
         story.description = request.form.get('story_description')

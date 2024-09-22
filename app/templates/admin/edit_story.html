@@ -2,7 +2,7 @@
 {% block content %}
 <div class="container mt-4">
     <h1>Story bearbeiten: {{ story.name }}</h1>
-    <form method="POST">
+    <form method="POST" onsubmit="return confirm('Sind Sie sicher, dass Sie diese Story löschen möchten?');">
         <div class="mb-3">
             <label for="story_name" class="form-label">Name</label>
             <input type="text" class="form-control" id="story_name" name="story_name" value="{{ story.name }}" required>
@@ -39,6 +39,7 @@
             </div>
         {% endfor %}
         <button type="submit" class="btn btn-primary">Änderungen speichern</button>
+        <button type="submit" name="delete_story" class="btn btn-danger">Story löschen</button>
     </form>
 </div>
 {% endblock %}
