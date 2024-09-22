@@ -2,19 +2,19 @@
 {% block content %}
 <section class="d-flex justify-content-center">
   <article class="card col-md-6 mt-4">
-    <h1 class="card-title text-center">{% block title %}{{ _('Wilkommen auf aware.swiss') }}{% endblock %}</h1>
+    <h1 class="card-title text-center">{% block title %}{{ _('Wilkommen auf Trivialis') }}{% endblock %}</h1>
 
     <div class="card-body">
       <img class="card-img-top" src="{{ url_for('static', filename='image.jpg') }}" alt="Image">
-      <p class="card-text">{{ _('Welcome to the security awareness learning-plattform for schools') }}</p>
+      <p class="card-text">{{ _('Willkommen bei der Lernplattform für Schulen zum Thema Sicherheitsbewusstsein') }}</p>
       {% if current_user %}
-      <p class="card-text">{{ _('Go to the available stories.') }}</p>
+      <p class="card-text">{{ _('Gehe zu den verfügbaren Geschichten.') }}</p>
       <div class="d-flex justify-content-between">
         <a class="btn btn-secondary col-md-2" href="{{ url_for('security.logout') }}">{{ _fsdomain('Logout') }}</a>
         <a class="btn btn-primary col-md-2" href="{{ url_for('story.stories') }}">{{ _('Stories') }}</a>
       </div>
       {% else %}
-      <p class="card-text">{{ _('Please use the buttons below to login or to register, if you don\'t have an account yet.') }}</p>
+      <p class="card-text">{{ _('Bitte nutze die Buttons unten, um dich zu registrieren oder einzuloggen, falls du noch kein Konto hast.') }}</p>
       <div class="d-flex justify-content-between">
         <a class="btn btn-secondary col-md-2" href="{{ url_for('security.register') }}">{{ _fsdomain('Register') }}</a>
         <a class="btn btn-primary col-md-2" href="{{ url_for('security.login') }}">{{ _fsdomain('Login') }}</a>
